@@ -62,7 +62,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="1kP-C5-2k5">
-                                <rect key="frame" x="0.0" y="131" width="414" height="731"/>
+                                <rect key="frame" x="0.0" y="106" width="414" height="556"/>
                                 <locale key="locale" localeIdentifier="ko"/>
                             </datePicker>
                         </subviews>
@@ -70,10 +70,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Cjk-5F-ByB" firstAttribute="top" secondItem="3AE-01-rNh" secondAttribute="top" constant="10" id="1Gt-J1-ka0"/>
-                            <constraint firstItem="1kP-C5-2k5" firstAttribute="top" secondItem="Cjk-5F-ByB" secondAttribute="bottom" constant="25" id="TQn-P9-Sfo"/>
                             <constraint firstItem="1kP-C5-2k5" firstAttribute="trailing" secondItem="3AE-01-rNh" secondAttribute="trailing" id="ZMO-cc-j35"/>
                             <constraint firstItem="Cjk-5F-ByB" firstAttribute="leading" secondItem="3AE-01-rNh" secondAttribute="leading" constant="20" id="e4q-4J-hH5"/>
-                            <constraint firstItem="3AE-01-rNh" firstAttribute="bottom" secondItem="1kP-C5-2k5" secondAttribute="bottom" id="eGS-vN-s1M"/>
+                            <constraint firstItem="3AE-01-rNh" firstAttribute="bottom" secondItem="1kP-C5-2k5" secondAttribute="bottom" constant="200" id="eGS-vN-s1M"/>
+                            <constraint firstItem="1kP-C5-2k5" firstAttribute="top" secondItem="Cjk-5F-ByB" secondAttribute="bottom" id="eZi-X4-ZrH"/>
                             <constraint firstItem="1kP-C5-2k5" firstAttribute="leading" secondItem="3AE-01-rNh" secondAttribute="leading" id="gaB-xj-VG2"/>
                             <constraint firstItem="3AE-01-rNh" firstAttribute="trailing" secondItem="Cjk-5F-ByB" secondAttribute="trailing" constant="20" id="gcu-SR-3ns"/>
                         </constraints>
