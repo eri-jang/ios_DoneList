@@ -25,9 +25,12 @@ class ToDoListItem: Object {
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var table: UITableView!
+    @IBOutlet var label: UILabel!
     
     private let realm = try! Realm()
     private var data = [ToDoListItem]()
+    
+    //private var data = [(title: String, note: String)] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +49,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text =  data[indexPath.row].item
+        cell.detailTextLabel?.text = "\(data[indexPath.row].date)"  //subtitle 추가
         return cell
     }
     
@@ -74,16 +78,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return
         }
         vc.completionHandler = { [weak self] in
+            self?.navigationController?.popToRootViewController(animated: true)
+            self?.label.isHidden = true
+            self?.table.isHidden = false
             self?.refresh()
         }
         vc.title = "New Item"
         vc.navigationItem.largeTitleDisplayMode = .never
+        
+        
         navigationController?.pushViewController(vc, animated: true)
         
     }
     
+    
     func refresh() {
         data = realm.objects(ToDoListItem.self).map({ $0 })
+        //self.data.append((item: ToDoListItem.item, date: ToDoListItem.date))
+        //self.label.isHidden = true
+        //self.table.isHidden = false
         table.reloadData()
     }
 }
