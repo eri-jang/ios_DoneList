@@ -32,10 +32,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //private var data = [(title: String, note: String)] = []
     
+    static let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        return dateFormatter
+    }()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         data = realm.objects(ToDoListItem.self).map({ $0 })
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        //table.register(UITableViewCell.self, forCellReuseIdentifier: "cell") //이거땜에 서브타이틀 안나오고 있었다 왜지
         table.delegate = self
         table.dataSource = self
     }
@@ -49,7 +56,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text =  data[indexPath.row].item
-        cell.detailTextLabel?.text = "\(data[indexPath.row].date)"  //subtitle 추가
+        cell.detailTextLabel?.text = Self.dateFormatter.string(from: data[indexPath.row].date)  //subtitle 추가
+        //dateLabel.text = Self.dateFormatter.string(from: data[indexPath.row].date)
+
         return cell
     }
     
